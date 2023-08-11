@@ -7,15 +7,18 @@ import HomePage from './component/HomePage';
 import Catagory from './component/Catagory';
 
 const API_KEY=import.meta.env.VITE_APP_API_KEY
+
 const App = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate(); // Hook to navigate between routes
   const [selectedCategory, setSelectedCategory] = useState('general'); // Default category
 
   useEffect(() => {
+    const apiUrl = `https://newsapi.org/v2/top-headlines?country=in&category=${selectedCategory}&apiKey=${API_KEY}`;
+
     const fetchApi = async () => {
       try {
-        const res = await fetch(`https://newsapi.org/v2/top-headlines?country=in&category=${selectedCategory}&apiKey=${API_KEY}`);
+        const res = await fetch(apiUrl);
         const data = await res.json();
 
         dispatch(setData(data.articles));
