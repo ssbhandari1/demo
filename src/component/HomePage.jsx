@@ -8,7 +8,7 @@ const HomePage = () => {
     <div style={{width:'100%',height:'100%'}}>
 
         {
-            newsData.map((item,index)=>{
+            newsData?.map((item,index)=>{
                 return(
                  <div key={index} style={{width:'70%',height:'40vh'}}>
                     <h4>{item.title}</h4>
